@@ -26,8 +26,12 @@ colnames(data.tree) <- c("Land","Dokumente","Quelle","Region","Kontinent")
 data.tree <- na.omit(data.tree)
 write.csv(data.tree, "./data/base_continent_regions.csv")
 
-#plot
+#plot Region
 
-pdf("./plot/treemapBase.pdf")
+pdf("./plot/treemapBaseRegion.pdf")
 tmPlot(data.tree, index=c("Region"), vSize="Quelle", vColor="Dokumente", type="dens")
 dev.off()
+
+#plot Kontinent
+pdf("./plot/treemapBaseContinent.pdf")
+tmPlot(data.tree, index=c("Kontinent"), vSize="Quelle", vColor="Dokumente", type="dens")
