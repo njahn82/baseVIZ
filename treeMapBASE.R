@@ -35,3 +35,14 @@ dev.off()
 #plot Kontinent
 pdf("./plot/treemapBaseContinent.pdf")
 tmPlot(data.tree, index=c("Kontinent"), vSize="Quelle", vColor="Dokumente", type="dens")
+dev.off()
+
+# vsize Dokumente
+
+pdf("./plot/treeMapBaseRegionDocs.pdf")
+tmPlot(data.tree, index=c("Region"), vSize="Dokumente", vColor="Quelle", type="dens")
+dev.off()
+
+pdf("./plot/treeMapBaseKontinentDocs.pdf")
+tmPlot(data.tree, index=c("Kontinent"), vSize="Dokumente", vColor="Quelle", type="dens")
+dev.off()
