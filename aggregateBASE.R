@@ -2,10 +2,16 @@
 
 require(XML)
 
-url <- "http://www.base-search.net/about/de/about_sources_date_dn.php?menu=2"
-
-my.data <- as.data.frame(readHTMLTable(url,header=T))
-
-colnames(my.data) <- c("Host","Dokumente","Land","Date")
-
-write.csv(my.data, file="./data/baseData.csv")
+base.source.df <- function() {
+  
+  url <- "http://www.base-search.net/about/en/about_sources_date_dn.php?menu=2"
+  
+  my.data <- as.data.frame(readHTMLTable(url,header=T))[,c(1:4)]
+  
+  colnames(my.data) <- c("Host","Records","Country","Date")
+  
+  my.data$Records <- as.numeric(as.character(gsub(",","", 
+                                                  as.character(my.data$Records))))
+  
+  return(my.data)
+}
